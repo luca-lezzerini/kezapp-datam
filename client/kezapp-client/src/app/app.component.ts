@@ -1,3 +1,4 @@
+import { InviaMessaggioDto } from './invia-messaggio-dto';
 import { RichiediRegistrazioneDto } from './richiedi-registrazione-dto';
 import { RegistrazioneDto } from './registrazione-dto';
 import { Chat, Messaggio } from './contatti';
@@ -43,6 +44,28 @@ export class AppComponent {
           this.sessione = r.sessione;
         }
       );
+  }
 
+  inviaTutti() {
+    // preparo le informazioni da mandare al server
+    let dto = new InviaMessaggioDto();
+    dto.messaggio = this.messaggio;
+    dto.destinatario = null;
+    dto.sessione = this.sessione;
+
+    // prepara la richiesta http
+    let ox: Observable<RegistrazioneDto> =
+      this.http.post<RegistrazioneDto>(
+        this.url + "invia-tutti" + this.postfix,
+        dto
+      );
+
+      // invoca il servizio Web
+      ox.subscribe(
+        r =>{
+          this.contatti = r.contatti;
+          this.messaggi = r.messaggi;
+        }
+      );
   }
 }

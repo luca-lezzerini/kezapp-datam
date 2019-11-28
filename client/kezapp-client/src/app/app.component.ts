@@ -1,3 +1,4 @@
+import { Chat, Messaggio } from './contatti';
 import { Component } from '@angular/core';
 
 @Component({
@@ -6,5 +7,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'kezapp-client';
+  nickname: string = "";
+  messaggio: string = "";
+  contatti:Chat[] = [];
+  messaggi:Messaggio[] = [];
 }

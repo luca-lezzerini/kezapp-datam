@@ -13,16 +13,17 @@ Contatti<br>
     </td>
   </tr>
 </table>
-Messaggi ricevuti<br>
+Messaggi ricevuti
+<button>Aggiorna</button><br>
 <table>
   <tr>
     <th>Mittente</th>
     <th>Destinatario</th>
     <th>Messaggio</th>
   </tr>
-<tr *ngFor="let mm of messaggi">
-  <td>{{mm.aliasMittente}}</td>
-  <td>{{mm.aliasDestinatario}}</td>
-  <td>{{mm.testo}}</td>
-</tr>
+  <tr *ngFor="let mm of messaggi">
+    <td>{{mm.aliasMittente}}</td>
+    <td>{{mm.aliasDestinatario}}</td>
+    <td>{{mm.testo}}</td>
+  </tr>
 </table>

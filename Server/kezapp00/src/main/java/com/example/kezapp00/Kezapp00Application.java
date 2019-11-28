@@ -13,8 +13,10 @@ public class Kezapp00Application {
 	}
 
 public void stampa(){
+
    double d = 7;
 	System.out.println("Buongiorno");
+   String s = '';
 }
 
 }

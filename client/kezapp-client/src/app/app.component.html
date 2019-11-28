@@ -1,31 +1,35 @@
-<input type="text" [(ngModel)]="nickname">
-<button (click)="registrazione()">Registrazione</button><br>
-<input type="text" [(ngModel)]="messaggio">
-<button (click)="inviaTutti()">Invia a tutti</button><br>
-Contatti<br>
-<table>
-  <tr>
-    <th>Nickname</th>
-    <th>Gestisci</th>
-  </tr>
-  <tr *ngFor="let cx of contatti">
-    <td>{{cx.nickname}}</td>
-    <td>
-      <button (click)="invia(cx)">Invia a {{cx.nickname}}</button>
-    </td>
-  </tr>
-</table>
-Messaggi ricevuti
-<button (click)="aggiorna()">Aggiorna</button><br>
-<table>
-  <tr>
-    <th>Mittente</th>
-    <th>Destinatario</th>
-    <th>Messaggio</th>
-  </tr>
-  <tr *ngFor="let mm of messaggi">
-    <td>{{mm.aliasMittente}}</td>
-    <td>{{mm.aliasDestinatario}}</td>
-    <td>{{mm.testo}}</td>
-  </tr>
-</table>
+<div *ngIf="sessione == ''">
+  <input type="text" [(ngModel)]="nickname">
+  <button (click)="registrazione()">Registrazione</button><br>
+</div>
+<div *ngIf="sessione != ''">
+  <input type="text" [(ngModel)]="messaggio">
+  <button (click)="inviaTutti()">Invia a tutti</button><br>
+  Contatti<br>
+  <table>
+    <tr>
+      <th>Nickname</th>
+      <th>Gestisci</th>
+    </tr>
+    <tr *ngFor="let cx of contatti">
+      <td>{{cx.nickname}}</td>
+      <td>
+        <button (click)="invia(cx)">Invia a {{cx.nickname}}</button>
+      </td>
+    </tr>
+  </table>
+  Messaggi ricevuti
+  <button (click)="aggiorna()">Aggiorna</button><br>
+  <table>
+    <tr>
+      <th>Mittente</th>
+      <th>Destinatario</th>
+      <th>Messaggio</th>
+    </tr>
+    <tr *ngFor="let mm of messaggi">
+      <td>{{mm.aliasMittente}}</td>
+      <td>{{mm.aliasDestinatario}}</td>
+      <td>{{mm.testo}}</td>
+    </tr>
+  </table>
+</div>

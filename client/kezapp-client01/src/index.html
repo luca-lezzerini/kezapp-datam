@@ -1,13 +1,26 @@
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <title>KezappClient01</title>
-  <base href="/">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
-</head>
-<body>
-  <app-root></app-root>
-</body>
-</html>
+Nome
+<input type="text" [(ngModel)]="nickName"><button>Registrazione</button><br>
+Cognome
+<input type="text" [(ngModel)]="messaggio"><button>Invia a tutti</button><br>
+Contatti<br>
+<br>
+<table>
+  <tr>
+    <th>NickName</th>
+    <th>Gestisci</th>
+  </tr>
+  <tr *ngFor="let cx of contatti">
+    <td>{{cx.nickname}}</td>
+       <td>
+      <button (click)="invia(cx)">Invia a {{cx.nickname}}</button>
+    </td>
+  </tr>
+  <tr *ngFor="let mm of messaggi">
+    <td>{{cx.nome}}</td>
+    <td>{{c.cognome}}</td>
+    <td>{{c.telefono}}</td>
+    <td>
+      <button (click)="cancella(j)">X</button>
+    </td>
+  </tr>
+</table>

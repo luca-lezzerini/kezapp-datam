@@ -1,5 +1,7 @@
-<input type="text" [(ngModel)]="nickname"><button>Registrazione</button><br>
-<input type="text" [(ngModel)]="messaggio"><button>Invia a tutti</button><br>
+<input type="text" [(ngModel)]="nickname">
+<button (click)="registrazione()">Registrazione</button><br>
+<input type="text" [(ngModel)]="messaggio">
+<button (click)="inviaTutti()">Invia a tutti</button><br>
 Contatti<br>
 <table>
   <tr>
@@ -9,12 +11,12 @@ Contatti<br>
   <tr *ngFor="let cx of contatti">
     <td>{{cx.nickname}}</td>
     <td>
-      <button>Invia a {{cx.nickname}}</button>
+      <button (click)="invia(cx)">Invia a {{cx.nickname}}</button>
     </td>
   </tr>
 </table>
 Messaggi ricevuti
-<button>Aggiorna</button><br>
+<button (click)="aggiorna()">Aggiorna</button><br>
 <table>
   <tr>
     <th>Mittente</th>

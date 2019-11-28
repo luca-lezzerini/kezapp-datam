@@ -10,4 +10,8 @@ public class Kezapp00Application {
 		SpringApplication.run(Kezapp00Application.class, args);
 	}
 
+public void stampa(){
+	System.out.println("Ciao");
+}
+
 }

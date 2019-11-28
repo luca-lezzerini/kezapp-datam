@@ -7,7 +7,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class Kezapp00Application {
 
 	public static void main(String[] args) {
+		int a = 0;
 		SpringApplication.run(Kezapp00Application.class, args);
+               
 	}
 
 public void stampa(){

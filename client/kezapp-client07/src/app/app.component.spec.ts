@@ -16,16 +16,16 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'kezapp-client07'`, () => {
+  it(`should have as title 'kezapp-client'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.debugElement.componentInstance;
-    expect(app.title).toEqual('kezapp-client07');
+    expect(app.title).toEqual('kezapp-client');
   });
 
   it('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('.content span').textContent).toContain('kezapp-client07 app is running!');
+    expect(compiled.querySelector('.content span').textContent).toContain('kezapp-client app is running!');
   });
 });

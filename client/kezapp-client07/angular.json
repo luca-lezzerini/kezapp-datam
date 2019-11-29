@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "kezapp-client07": {
+    "kezapp-client": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/kezapp-client07",
+            "outputPath": "dist/kezapp-client",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -63,18 +63,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "kezapp-client07:build"
+            "browserTarget": "kezapp-client:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "kezapp-client07:build:production"
+              "browserTarget": "kezapp-client:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "kezapp-client07:build"
+            "browserTarget": "kezapp-client:build"
           }
         },
         "test": {
@@ -111,15 +111,15 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "kezapp-client07:serve"
+            "devServerTarget": "kezapp-client:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "kezapp-client07:serve:production"
+              "devServerTarget": "kezapp-client:serve:production"
             }
           }
         }
       }
     }},
-  "defaultProject": "kezapp-client07"
+  "defaultProject": "kezapp-client"
 }

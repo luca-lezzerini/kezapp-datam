@@ -25,9 +25,9 @@ export class AppComponent {
   constructor(private http: HttpClient) { }
   registrazione() {
     // preparo le informazioni da mandare al server
-    let dto = new RichiediRegistrazioneDto;
+    let dto = new RichiediRegistrazioneDto();
     dto.nickname = this.nickname;
-
+    console.log(dto);
     let ox: Observable<RegistrazioneDto> =
       this.http.post<RegistrazioneDto>(
         this.url + "registrazione" + this.postfix,
@@ -44,10 +44,11 @@ export class AppComponent {
   }
   inviaTutti() {
     // preparo le informazioni da mandare al server
-    let mdto = new InviaMessaggioDto;
+    let mdto = new InviaMessaggioDto();
     mdto.messaggio = this.messaggio;
     mdto.sessione = this.sessione;
     mdto.destinatario = null;
+    console.log(mdto);
 
     // preparo la chiamata http
     let ox: Observable<RegistrazioneDto> =
@@ -58,6 +59,7 @@ export class AppComponent {
       //invoca il servizio web
     ox.subscribe(
       r => {
+        console.log(r);
         this.contatti = r.contatti;
         this.messaggi = r.messaggi;
       }

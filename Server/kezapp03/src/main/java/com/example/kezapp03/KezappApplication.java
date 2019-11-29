@@ -1,4 +1,4 @@
-package com.example.kezapp;
+package com.example.kezapp03;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

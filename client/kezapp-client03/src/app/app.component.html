@@ -1,5 +1,5 @@
 <div *ngIf="sessione == ''">
-  <input type="text" [(ngModel)]="nickName">
+  <input type="text" [(ngModel)]="nickname">
   <button (click)="registrazione()">Registrazione</button>
 </div>
 <br>
@@ -10,14 +10,14 @@
   Contatti <br>
   <table>
     <tr>
-      <th>NickName</th>
+      <th>Nickname</th>
       <th>Gestisci</th>
     </tr>
     <!-- Righe dati -->
     <tr *ngFor="let c of contatti; index as j">
-      <td>{{c.nickName}}</td>
+      <td>{{c.nickname}}</td>
       <td>
-        <button (click)="Invia(c)">"Invia a {{c.nickName}})">X</button>
+        <button (click)="invia(c)">Invia a {{c.nickname}}</button>
       </td>
 
     </tr>

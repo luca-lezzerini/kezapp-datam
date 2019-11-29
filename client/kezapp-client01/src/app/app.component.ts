@@ -1,3 +1,4 @@
+import { InviaMessaggioDto } from './invia-messaggio-dto';
 import { Component } from '@angular/core';
 import { Messaggio, Chat } from './contatti';
 import { Observable } from 'rxjs';
@@ -45,4 +46,27 @@ export class AppComponent {
         }  
       )
   }
+  inviaTutti() {
+    //prepara la registrazione sul server
+    let dto = new InviaMessaggioDto();
+    dto.messaggio = this.messaggio;
+    dto.destinatario = null;
+    dto.sessione = this.sessione;
+
+    //prepara la richiesta http
+    let ox: Observable<RegistrazioneDto> =
+      this.http.post<RegistrazioneDto>(
+        this.url + "invia-tutti" + this.postfix,
+        dto
+      );
+
+      //invoca il servizio web
+      ox.subscribe(
+        r =>{
+          this.contatti = r.contatti;
+          this.messaggi = r.messaggi;
+         
+        }  
+      )
+  } 
 }

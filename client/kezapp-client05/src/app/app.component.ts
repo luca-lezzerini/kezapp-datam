@@ -20,7 +20,7 @@ export class AppComponent {
   sessione: string = "";
 
   readonly url: string = "http://localhost:8080/";
-  readonly postfix: string = "00";
+  readonly postfix: string = "05";
 
   constructor(private http: HttpClient) { }
 

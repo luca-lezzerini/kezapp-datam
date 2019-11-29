@@ -1,9 +1,9 @@
-<div *ngif="sessione == ''">
+<div *ngIf="sessione == ''">
   <input type="text" [(ngModel)]="nickname">;
   <button (click)="registrazione()">Registrazione</button><br>
 </div>
 
-<div *ngif="sessione != ''">
+<div *ngIf="sessione != ''">
   <input type="text" [(ngModel)]="messaggio">;
   <button (click)="inviaTutti()">Invia a Tutti</button><br>
 

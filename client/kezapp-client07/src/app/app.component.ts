@@ -1,11 +1,13 @@
-import { InviaMessaggioDto } from './invia-messaggio-dto';
-import { RichiediRegistrazioneDto } from './richiedi-registrazione-dto';
-import { RegistrazioneDto } from './registrazione-dto';
-import { Chat, Messaggio } from './contatti';
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { Messaggio, Chat } from './contatti';
+import { RichiediRegistrazioneDto } from './richiedi-registrazione-dto';
+import { RegistrazioneDto } from './registrazione-dto';
+import { InviaMessaggioDto } from './invia-messaggio-dto';
 
+
+type NewType = Chat;
 
 @Component({
   selector: 'app-root',
@@ -15,12 +17,12 @@ import { Observable } from 'rxjs';
 export class AppComponent {
   nickname: string = "";
   messaggio: string = "";
-  contatti: Chat[] = [];
+  contatti: NewType[] = [];
   messaggi: Messaggio[] = [];
   sessione: string = "";
 
   readonly url: string = "http://localhost:8080/";
-  readonly postfix: string = "00";
+  readonly postfix: string = "07";
 
   constructor(private http: HttpClient) { }
 

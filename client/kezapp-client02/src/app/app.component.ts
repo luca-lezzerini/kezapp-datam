@@ -19,7 +19,7 @@ export class AppComponent {
   messaggi: Messaggio[] = [];
   sessione: string = "";
 
-  readonly url: string = "http://localhost:8080";
+  readonly url: string = "http://localhost:8080/";
   readonly postfix: string = "02";
 
   constructor(private http: HttpClient) { };
@@ -47,7 +47,7 @@ export class AppComponent {
     );
   }
 
-  InviaTutti() {
+  inviaTutti() {
     let dto = new InviaMessaggioDto();
     dto.messaggio = this.messaggio;
     dto.sessione = this.sessione;

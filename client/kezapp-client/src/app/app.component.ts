@@ -52,6 +52,7 @@ export class AppComponent {
     dto.messaggio = this.messaggio;
     dto.destinatario = null;
     dto.sessione = this.sessione;
+    console.log(dto);
 
     // prepara la richiesta http
     let ox: Observable<RegistrazioneDto> =

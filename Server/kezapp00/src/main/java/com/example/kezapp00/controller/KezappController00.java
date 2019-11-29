@@ -15,7 +15,7 @@ public class KezappController00 {
     @Autowired
     KezappService kezappService;
 
-    @RequestMapping(value = {"/registrazione"})
+    @RequestMapping(value = {"/registrazione00"})
     @ResponseBody
     public RegistrazioneDto registrazione(
             @RequestBody RichiediRegistrazioneDto dto

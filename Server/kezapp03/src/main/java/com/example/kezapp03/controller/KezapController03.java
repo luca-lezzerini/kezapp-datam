@@ -24,26 +24,25 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @CrossOrigin("*")
 @Controller
 public class KezapController03 {
-    
+
     @Autowired
-    KezappService kezappService; 
+    KezappService kezappService;
 
     @RequestMapping(value = {"/registrazione03"})
     @ResponseBody
 
     public RegistrazioneDto registrazione(@RequestBody RichiediRegistrazioneDto dto) {
-        
-        return kezappService.registazione(dto); 
+
+        return kezappService.registrazione(dto);
 
     }
-
 
     @RequestMapping(value = {"/invia-tutti03"})
     @ResponseBody
 
     public RegistrazioneDto inviaTutti(@RequestBody InviaMessaggioDto dto) {
-        
-        return kezappService.inviaTutti(dto); 
+
+        return kezappService.inviaTutti(dto);
 
     }
 

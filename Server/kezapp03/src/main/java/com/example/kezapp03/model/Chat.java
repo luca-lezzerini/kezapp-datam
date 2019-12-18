@@ -5,11 +5,22 @@
  */
 package com.example.kezapp03.model;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
 /**
  *
  * @author utente
  */
+//trasformo in entità
+
+@Entity
 public class Chat {
+    // definire una chiave primaria
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     
     private Long id;
     private String nickname;

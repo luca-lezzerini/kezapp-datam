@@ -7,6 +7,7 @@ package com.example.kezapp03.service;
 
 import com.example.kezapp03.dto.InviaMessaggioDto;
 import com.example.kezapp03.dto.RegistrazioneDto;
+import com.example.kezapp03.dto.RichiediMessaggioDto;
 import com.example.kezapp03.dto.RichiediRegistrazioneDto;
 
 /**
@@ -16,8 +17,12 @@ import com.example.kezapp03.dto.RichiediRegistrazioneDto;
 public interface KezappService {
 
     //FIXME: mancano tre metodi
-    RegistrazioneDto registazione(RichiediRegistrazioneDto dto);
+    RegistrazioneDto registrazione(RichiediRegistrazioneDto dto);
 
     RegistrazioneDto inviaTutti(InviaMessaggioDto dto);
+
+    RegistrazioneDto inviaUno(InviaMessaggioDto dto);
+
+    RegistrazioneDto aggiorna(RichiediMessaggioDto dto);
 
 }

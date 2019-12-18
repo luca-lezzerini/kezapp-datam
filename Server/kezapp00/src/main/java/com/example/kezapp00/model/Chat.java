@@ -1,5 +1,8 @@
 package com.example.kezapp00.model;
 
+import org.springframework.boot.autoconfigure.domain.EntityScan;
+
+@Entity
 public class Chat {
 
     private Long id;

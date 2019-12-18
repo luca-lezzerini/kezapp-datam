@@ -1,7 +1,14 @@
 package com.example.kezapp00.model;
 
-public class Messaggio {
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
+@Entity
+public class Messaggio {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String testo;
     private String aliasDestinatario;

@@ -6,10 +6,12 @@ import com.example.kezapp00.dto.RichiediMessaggiDto;
 import com.example.kezapp00.dto.RichiediRegistrazioneDto;
 import com.example.kezapp00.model.Chat;
 import com.example.kezapp00.model.Messaggio;
+import com.example.kezapp00.repository.ChatRepository;
 import com.example.kezapp00.service.KezappService;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -18,18 +20,20 @@ public class KezappServiceImpl implements KezappService {
     private List<Chat> chats = new ArrayList<>();
     private List<Messaggio> msgs = new ArrayList();
 
+    @Autowired
+    ChatRepository chatRepository;
+
     @Override
     public RegistrazioneDto registrazione(
             RichiediRegistrazioneDto dto) {
         String nn = dto.getNickname();
         // cerca il nickname ...
-        for (Chat chat : chats) {
-            // se lo trova, ritorna sessione vuota
-            if (chat.getNickname().equalsIgnoreCase(nn)) {
-                RegistrazioneDto r = new RegistrazioneDto();
-                r.setSessione("");
-                return r;
-            }
+        Chat cc = chatRepository.findByNickname(nn);
+        // se lo trova, ritorna sessione vuota
+        if (cc != null) {
+            RegistrazioneDto r = new RegistrazioneDto();
+            r.setSessione("");
+            return r;
         }
 
         // se non lo trova genera una sessione casuale
@@ -42,15 +46,20 @@ public class KezappServiceImpl implements KezappService {
         // ma non lo facciamo
 //        } while (true);
         // crea una nuova chat
-        Chat cc = new Chat();
-        cc.setNickname(nn);
-        cc.setSessione(sx);
-        chats.add(cc);
+        Chat cc2 = new Chat();
+
+        cc2.setNickname(nn);
+
+        cc2.setSessione(sx);
+
+        chatRepository.save(cc2);
 
         // ritorna la sessione
         RegistrazioneDto dx = new RegistrazioneDto();
+
         dx.setSessione(sx);
-        dx.setContatti(chats);
+
+        dx.setContatti(chatRepository.findAll());
         // TODO: impostare i messaggi
         return dx;
     }
@@ -104,7 +113,7 @@ public class KezappServiceImpl implements KezappService {
         RegistrazioneDto rr = new RegistrazioneDto();
         return rr;
     }
-    
+
     @Override
     public RegistrazioneDto aggiorna(RichiediMessaggiDto dto) {
         String ss = dto.getSessione();

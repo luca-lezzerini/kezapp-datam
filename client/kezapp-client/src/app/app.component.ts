@@ -1,3 +1,4 @@
+import { RichiediMessaggiDto } from './richiedi-messaggi';
 import { InviaMessaggioDto } from './invia-messaggio-dto';
 import { RichiediRegistrazioneDto } from './richiedi-registrazione-dto';
 import { RegistrazioneDto } from './registrazione-dto';
@@ -19,6 +20,9 @@ export class AppComponent {
   messaggi: Messaggio[] = [];
   sessione: string = "";
 
+  // usa server su Web
+  // readonly url: string = "http://84.22.108.21:8080/";
+  // usa server di sviluppo
   readonly url: string = "http://localhost:8080/";
   readonly postfix: string = "00";
 
@@ -36,14 +40,14 @@ export class AppComponent {
         dto
       );
 
-      // invoca il servizio Web
-      ox.subscribe(
-        r =>{
-          this.contatti = r.contatti;
-          this.messaggi = r.messaggi;
-          this.sessione = r.sessione;
-        }
-      );
+    // invoca il servizio Web
+    ox.subscribe(
+      r => {
+        this.contatti = r.contatti;
+        this.messaggi = r.messaggi;
+        this.sessione = r.sessione;
+      }
+    );
   }
 
   inviaTutti() {
@@ -61,12 +65,59 @@ export class AppComponent {
         dto
       );
 
-      // invoca il servizio Web
-      ox.subscribe(
-        r =>{
-          this.contatti = r.contatti;
-          this.messaggi = r.messaggi;
-        }
+    // invoca il servizio Web
+    ox.subscribe(
+      r => {
+        this.contatti = r.contatti;
+        this.messaggi = r.messaggi;
+      }
+    );
+  }
+
+  invia(cx: Chat) {
+    // preparo le informazioni da mandare al server
+    let dto = new InviaMessaggioDto();
+    dto.messaggio = this.messaggio;
+    dto.destinatario = cx.nickname;
+    dto.sessione = this.sessione;
+    console.log(dto);
+
+    // prepara la richiesta http
+    let ox: Observable<RegistrazioneDto> =
+      this.http.post<RegistrazioneDto>(
+        this.url + "invia-uno" + this.postfix,
+        dto
       );
+
+    // invoca il servizio Web
+    ox.subscribe(
+      r => {
+        this.contatti = r.contatti;
+        this.messaggi = r.messaggi;
+      }
+    );
+  }
+
+  aggiorna() {
+    // preparo le informazioni da mandare al server
+    let dto = new RichiediMessaggiDto();
+    dto.sessione = this.sessione;
+    console.log(dto);
+
+    // prepara la richiesta http
+    let ox: Observable<RegistrazioneDto> =
+      this.http.post<RegistrazioneDto>(
+        this.url + "aggiorna" + this.postfix,
+        dto
+      );
+
+    // invoca il servizio Web
+    ox.subscribe(
+      r => {
+        this.contatti = r.contatti;
+        this.messaggi = r.messaggi;
+      }
+    );
+
   }
 }
